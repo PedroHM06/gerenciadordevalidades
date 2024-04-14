@@ -26,6 +26,8 @@ class ProdutosController extends AppController {
 
     public function edit($id = null){
         $this->layout = 'ajax';
+
+        //echo '<pre>';print_r( $this->Produto->findById($id));exit;
         $this->set('produto', $this->Produto->findById($id));
         $this->set('categorias', $this->Categoria->find('all'));
     }

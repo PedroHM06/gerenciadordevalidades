@@ -53,9 +53,9 @@ foreach ($produtos as $produto){
         <?php foreach ($item as $index ): ?>
             <?php
                 $validade = $index['validade'];
-
+                date_default_timezone_set('America/Sao_Paulo');
                 $dataAtual = date('Y-m-d');
-
+                
                 $validadeDateTime = new DateTime($validade);
                 $dataAtualDateTime = new DateTime($dataAtual);
 
@@ -94,7 +94,7 @@ foreach ($produtos as $produto){
                     <p><?php $diasValidade = ($validade < $dataAtual) ?  'Vencido a ' . $diferenca->days . ' dias'  :  $diferenca->days .' dias.'; echo $diasValidade;?></p>
                 </td>
                  <td>
-                    <p><?php if($validade > $dataAtual) { echo $index['status'];}else{ if ($index['status'] != 'Vencido' && $index['status'] == '' ) {echo 'Alterar status';} else {echo $index['status'];}};?></p>
+                    <p><?php if($validade >= $dataAtual) { if($validade == $dataAtual){$index['status'] = 'A vencer';}; echo $index['status'];}else if ($index['status'] == 'A vencer' || $index['status'] == '' ) {echo 'Alterar status';} else {echo $index['status'];};?></p>
                 </td>
                 <td>
                     <p><?php echo $index['quantidade']?></p>

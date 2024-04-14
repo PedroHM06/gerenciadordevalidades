@@ -15,10 +15,10 @@
     <select class="form-control" name="categoria_id" id="categoria_id">
         <option value="">Selecione uma categoria</option>
         <?php foreach ($categorias as $categoria): ?>
-            <option value="<?php echo $categoria['Categoria']['id']; ?>">
-                <?php echo $categoria['Categoria']['nome']; ?>
-            </option>
-        <?php endforeach; ?>
+    <option value="<?= $categoria['Categoria']['id']; ?>" <?php echo ($produto['Produto']['categoria_id'] == $categoria['Categoria']['id']) ? 'selected' : ''; ?>>
+        <?= $categoria['Categoria']['nome']; ?>
+    </option>
+<?php endforeach; ?>
     </select>
     </div>
     <div class="form-group">
@@ -34,9 +34,9 @@
     <div class="form-group mt-3">
     <label for="status">Status</label>
     <select class="form-control" name="status" id="status">
-        <option value="" selected><?php $produto['Produto']['status']?></option>
-        <option value="A vencer">A vencer</option>
-        <option value="Vencido">Vencido</option>
+        <option value="" >-Selecione-</option>
+        <option value="A vencer" <?= $produto['Produto']['status'] == "A vencer" ? 'selected' : ''  ?>>A vencer</option>
+        <option value="Vencido" <?= $produto['Produto']['status'] == "Vencido" ? 'selected' : ''  ?>>Vencido</option>
     </select>
     <div class="form-group">
         <label for="quantidade">Quantidade do Produto</label>
